@@ -7,19 +7,21 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.tp_ex1.R
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var listView: ListView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Use the consistent variable name
-        listView = findViewById(R.id.listView)
+        val lv: ListView = findViewById(R.id.listView)
+        val languages = listOf("Java", "C#", "Python", "Kotlin", "Swift")
+//        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, languages)
 
-        val langs = listOf("Java", "C#", "Python", "Kotlin", "Swift")
+//        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, languages)
+//        lv.adapter = adapter
+//        lv.choiceMode = ListView.CHOICE_MODE_SINGLE
 
-        val adapter = LanguagesAdapter(this, langs)
-        listView.adapter = adapter
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, languages)
+        lv.adapter = adapter
+        lv.choiceMode = ListView.CHOICE_MODE_MULTIPLE
     }
 }
